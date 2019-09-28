@@ -28,4 +28,4 @@ jobs:
         if: matrix.node-version == '12.x'
         uses: luvies/action-yarn-publish@master
         with:
-          dry-run: true
+          dry-run: false
