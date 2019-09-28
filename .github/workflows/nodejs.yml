@@ -31,3 +31,4 @@ jobs:
           dry-run: false
         env:
           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
