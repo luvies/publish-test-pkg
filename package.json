@@ -6,6 +6,9 @@
   "repository": "https://github.com/luvies/publish-test-pkg",
   "author": "luvies",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "./node_modules/@luvies/config/scripts/lint.sh",
