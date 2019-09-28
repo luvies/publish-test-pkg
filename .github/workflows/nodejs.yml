@@ -26,6 +26,6 @@ jobs:
           CI: true
       - name: Auto publish
         if: matrix.node-version == '12.x'
-        uses: luvies/action-yarn-publish@master
+        uses: luvies/action-yarn-publish@v0.0.1
         with:
           dry-run: true
