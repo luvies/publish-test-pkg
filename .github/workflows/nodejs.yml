@@ -29,3 +29,5 @@ jobs:
         uses: luvies/action-yarn-publish@master
         with:
           dry-run: false
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
