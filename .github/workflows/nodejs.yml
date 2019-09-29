@@ -46,6 +46,7 @@ jobs:
       - name: Auto publish to NPM
         uses: luvies/action-yarn-publish@master
         with:
+          package-path: 'src'
           skipped-versions: 0.0.4 || 0.0.6
           git-tag: true
         env:
