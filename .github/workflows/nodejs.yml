@@ -29,6 +29,7 @@ jobs:
         uses: luvies/action-yarn-publish@master
         with:
           skipped-versions: 0.0.4 || 0.0.6
+          git-tag: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
