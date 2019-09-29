@@ -39,14 +39,14 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install, build, and test
         run: |
-          yarn
-          yarn build
+          cd sub-project && yarn
+          cd sub-project && yarn build
         env:
           CI: true
       - name: Auto publish to NPM
         uses: luvies/action-yarn-publish@master
         with:
-          package-path: 'src'
+          package-path: 'sub-project'
           skipped-versions: 0.0.4 || 0.0.6
           git-tag: true
         env:
@@ -60,6 +60,7 @@ jobs:
       - name: Auto publish to github
         uses: luvies/action-yarn-publish@master
         with:
+          package-path: 'sub-project'
           skipped-versions: 0.0.4 || 0.0.6
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

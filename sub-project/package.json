@@ -1,0 +1,16 @@
+{
+  "name": "@luvies/publish-test-pkg2",
+  "version": "0.0.1",
+  "description": "Test package",
+  "main": "index.js",
+  "repository": "https://github.com/luvies/publish-test-pkg",
+  "author": "luvies",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "true",
+    "lint": "true"
+  }
+}
