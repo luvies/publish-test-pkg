@@ -1,6 +1,6 @@
 {
   "name": "@luvies/publish-test-pkg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A package purely to allow testing of CI/CD publishing logic",
   "main": "dist/index.js",
   "repository": "https://github.com/luvies/publish-test-pkg",
