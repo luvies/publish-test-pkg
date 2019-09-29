@@ -39,6 +39,42 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install, build, and test
         run: |
+          yarn
+          yarn build
+        env:
+          CI: true
+      - name: Auto publish to NPM
+        uses: luvies/action-yarn-publish@master
+        with:
+          skipped-versions: 0.0.4 || 0.0.6
+          git-tag: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Switch to github registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Auto publish to github
+        uses: luvies/action-yarn-publish@master
+        with:
+          skipped-versions: 0.0.4 || 0.0.6
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  sub-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install, build, and test
+        run: |
           cd sub-project
           yarn
           yarn build
