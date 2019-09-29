@@ -28,7 +28,7 @@ jobs:
         if: matrix.node-version == '12.x'
         uses: luvies/action-yarn-publish@master
         with:
-          dry-run: false
+          skipped-versions: 0.0.4 || 0.0.6
         env:
           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
