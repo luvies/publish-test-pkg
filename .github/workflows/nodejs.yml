@@ -24,8 +24,26 @@ jobs:
           yarn build
         env:
           CI: true
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install, build, and test
+        run: |
+          yarn
+          yarn build
+        env:
+          CI: true
       - name: Auto publish to NPM
-        if: matrix.node-version == '12.x'
         uses: luvies/action-yarn-publish@master
         with:
           skipped-versions: 0.0.4 || 0.0.6
@@ -34,13 +52,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Switch to github registry
-        if: matrix.node-version == '12.x'
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
       - name: Auto publish to github
-        if: matrix.node-version == '12.x'
         uses: luvies/action-yarn-publish@master
         with:
           skipped-versions: 0.0.4 || 0.0.6
