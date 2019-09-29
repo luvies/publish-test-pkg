@@ -24,5 +24,10 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
     "prettier": "^1.18.2",
     "typescript": "^3.6.3"
-  }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "yarn.lock"
+  ]
 }
