@@ -39,8 +39,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install, build, and test
         run: |
-          cd sub-project && yarn
-          cd sub-project && yarn build
+          cd sub-project
+          yarn
+          yarn build
         env:
           CI: true
       - name: Auto publish to NPM
